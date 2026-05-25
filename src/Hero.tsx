@@ -14,7 +14,7 @@ export default function Hero() {
         
 
         {/* HERO SECTION (SCALED 150%) */}
-        <div className="scale-[1.2] origin-top mt-10 flex items-start justify-between">
+        <div className="scale-[1.0] origin-top mt-10 flex items-start justify-between">
 
           {/* LEFT SIDE */}
           <div className="flex w-1/2 flex-col">

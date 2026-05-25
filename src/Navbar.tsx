@@ -24,7 +24,14 @@ export default function Navbar() {
         {/* NAV LINKS */}
         <div className="flex items-center gap-8">
           <Link to="/" className={navLinkClass}>HOME</Link>  {"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
-          <Link to="/socials" className={navLinkClass}>SOCIALS</Link>{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
+          <a
+  href="https://www.facebook.com/profile.php?id=61590357570832"
+  target="_blank"
+  rel="noopener noreferrer"
+  className={navLinkClass}
+>
+  SOCIALS
+</a>{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
           <Link to="/menu" className={navLinkClass}>MENU</Link>{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
           <Link to="/contact" className={navLinkClass}>CONTACT</Link>{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
         </div>
