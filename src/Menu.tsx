@@ -1,23 +1,26 @@
 import classicImg from "./assets/classic.png";
 import bruleImg from "./assets/brule.png";
 import quesoImg from "./assets/queso.png";
-import fudgeImg from "./assets/fudge.png";
-import velvetImg from "./assets/velvet.png";
-import { Star } from "lucide-react";
-import { Link } from "react-router-dom"; 
+import fudgeImg from "./assets/fudge.png";import velvetImg from "./assets/velvet.png";
 
-const menuItems = [
-  { name: "CLASSIC KAMOTE MACAROONS", image: classicImg },
-  { name: "MACAROON LE BRULE", image: bruleImg },
-  { name: "TOASTED QUESO MACAROON", image: quesoImg },
-  { name: "FUDGE-TOP MACAROON", image: fudgeImg },
-  { name: "VELVET WHIPPED MACAROON", image: velvetImg },
+import { Star, Plus } from "lucide-react";
+import { Link } from "react-router-dom"; 
+import { useCart, type MenuItem } from "./CartContext";
+
+const menuItems: MenuItem[] = [
+  { name: "CLASSIC KAMOTE MACAROONS", image: classicImg, price: 50 },
+  { name: "MACAROON LE BRULE", image: bruleImg, price: 60 },
+  { name: "TOASTED QUESO MACAROON", image: quesoImg, price: 55 },
+  { name: "FUDGE-TOP MACAROON", image: fudgeImg, price: 65 },
+  { name: "VELVET WHIPPED MACAROON", image: velvetImg, price: 70 },
 ];
 
 export default function Menu() {
+  const { addToCart, totalItems } = useCart();
   return (
+    
     <section className="min-h-screen bg-[#E6E0D4] py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+      
 
         {/* HEADER */}
         <div className="mb-16 rounded-[38px] border border-[#E0C9A6]/40 bg-[#E6E0D4] shadow-sm px-8 md:px-16 py-14">
@@ -37,8 +40,15 @@ export default function Menu() {
             </p>
 {"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
            <button className="bg-transparent border-none outline-none underline text-[18px]">
-  view all flavors
+  view all flavors <br></br>
+ <Link
+  to="/cart"
+  className="inline-flex items-center gap-3 bg-[#D89A5B] text-white px-7 py-4 rounded-full text-[20px] font-bold tracking-wide shadow-lg transition-all duration-300 hover:bg-[#C98647] hover:scale-105 hover:shadow-xl"
+>
+  {"\u00A0"}Checkout ({totalItems}){"\u00A0"}{"\u00A0"}
+</Link>
 </button>
+
           </div>
         </div>
 <br></br>
@@ -48,7 +58,7 @@ export default function Menu() {
 {"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
     <Link
       to="/menu"
-      className="bg-transparent border-none outline-none underline text-[18px] hover: text-[#3A2A1F] transition"
+      className="bg-transparent underline text-[18px] hover:text-[#3A2A1F] transition"
     >
       PASTRY
     </Link>
@@ -90,6 +100,17 @@ export default function Menu() {
       <h3 className="font-semibold text-[#3A2A1F] tracking-wide text-sm leading-relaxed px-2">
         {item.name}
       </h3>
+      <p className="mt-2 text-[#6A4A33] font-bold text-lg">
+  ₱{item.price}
+</p>
+      {/* ADD TO CART BUTTON */}
+           <button 
+  onClick={() => addToCart(item)}
+  className="mt-5 flex items-center gap-2 bg-[#D89A5B] text-white px-6 py-3 rounded-full text-[17px] font-semibold tracking-wide shadow-md transition-all duration-300 hover:scale-105 hover:bg-[#C98647] hover:shadow-lg active:scale-95"
+>
+  <Plus size={18} strokeWidth={2.5} />
+  Add to Cart {"\u00A0"}  
+</button>
     </div>
   ))}
 </div>  
@@ -114,7 +135,7 @@ export default function Menu() {
           </div>
         </div>
 
-      </div>
+      
     </section>
   );
 }

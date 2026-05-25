@@ -1,17 +1,17 @@
 import lemonImg from "./assets/lemon.png";
 import appleImg from "./assets/apple.png";
 import lycheeImg from "./assets/lychee.png";
-import { Star } from "lucide-react";
+import { Star, Plus } from "lucide-react";
 import { Link } from "react-router-dom"; 
+import { useCart, type MenuItem } from "./CartContext";
 
-const menuItems = [
-  { name: "honey-lemon kamo zest", image: lemonImg },
-  { name: "green apple kamo zest", image: appleImg },
-  { name: "lychee kamo zest", image: lycheeImg },
-  
+const menuItems: MenuItem[] = [
+  { name: "honey-lemon kamo zest", image: lemonImg, price: 80 },
+  { name: "green apple kamo zest", image: appleImg, price: 85 },
+  { name: "lychee kamo zest", image: lycheeImg, price: 90 },
 ];
-
 export default function Drinks() {
+  const { addToCart, totalItems } = useCart();
   return (
     <section className="min-h-screen bg-[#E6E0D4] py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -34,8 +34,15 @@ export default function Drinks() {
             </p>
 {"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}{"\u00A0"}
            <button className="bg-transparent border-none outline-none underline text-[18px]">
-  view all flavors
+  view all flavors  <br></br>    
+ <Link
+  to="/cart"
+  className="inline-flex items-center gap-3 bg-[#D89A5B] text-white px-7 py-4 rounded-full text-[20px] font-bold tracking-wide shadow-lg transition-all duration-300 hover:bg-[#C98647] hover:scale-105 hover:shadow-xl"
+>
+  {"\u00A0"}Checkout ({totalItems}){"\u00A0"}{"\u00A0"}
+</Link>
 </button>
+
           </div>
         </div>
 <br></br>
@@ -87,6 +94,16 @@ export default function Drinks() {
       <h3 className="font-semibold text-[#3A2A1F] tracking-wide text-sm leading-relaxed px-2">
         {item.name}
       </h3>
+      <p className="mt-2 text-[#6A4A33] font-bold text-lg">
+  ₱{item.price}
+</p>
+      <button 
+  onClick={() => addToCart(item)}
+  className="mt-5 flex items-center gap-2 bg-[#D89A5B] text-white px-6 py-3 rounded-full text-[17px] font-semibold tracking-wide shadow-md transition-all duration-300 hover:scale-105 hover:bg-[#C98647] hover:shadow-lg active:scale-95"
+>
+  <Plus size={18} strokeWidth={2.5} />
+  Add to Cart {"\u00A0"}  
+</button>
     </div>
   ))}
 </div>  
