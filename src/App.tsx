@@ -15,13 +15,16 @@ export default function App() {
     audio.loop = true;
     audio.volume = 0.3;
 
-    audio.play().catch((err) => {
-      console.log("Autoplay blocked:", err);
-    });
+    const playMusic = () => {
+      audio.play();
+      document.removeEventListener("click", playMusic);
+    };
+
+    document.addEventListener("click", playMusic);
 
     return () => {
       audio.pause();
-      audio.currentTime = 0;
+      document.removeEventListener("click", playMusic);
     };
   }, []);
 
