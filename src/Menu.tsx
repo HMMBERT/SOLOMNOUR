@@ -1,18 +1,19 @@
 import classicImg from "./assets/classic.png";
 import bruleImg from "./assets/brule.png";
 import quesoImg from "./assets/queso.png";
-import fudgeImg from "./assets/fudge.png";import velvetImg from "./assets/velvet.png";
+import fudgeImg from "./assets/fudge.png";
+import velvetImg from "./assets/flan.png";
 
 import { Star, Plus } from "lucide-react";
 import { Link } from "react-router-dom"; 
 import { useCart, type MenuItem } from "./CartContext";
 
 const menuItems: MenuItem[] = [
-  { name: "CLASSIC KAMOTE MACAROONS", image: classicImg, price: 50 },
-  { name: "MACAROON LE BRULE", image: bruleImg, price: 60 },
-  { name: "TOASTED QUESO MACAROON", image: quesoImg, price: 55 },
-  { name: "FUDGE-TOP MACAROON", image: fudgeImg, price: 65 },
-  { name: "VELVET WHIPPED MACAROON", image: velvetImg, price: 70 },
+  { name: "CLASSIC KAMOTE MACAROONS", image: classicImg, price: 15 },
+  { name: "MACAROON LE BRULE", image: bruleImg, price: 15 },
+  { name: "TOASTED QUESO MACAROON", image: quesoImg, price: 15 },
+  { name: "FUDGE-TOP MACAROON", image: fudgeImg, price: 15 },
+  { name: "CARAMEL CAP MACAROON", image: velvetImg, price: 20 },
 ];
 
 export default function Menu() {

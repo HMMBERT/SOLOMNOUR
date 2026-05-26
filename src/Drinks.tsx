@@ -1,14 +1,16 @@
 import lemonImg from "./assets/lemon.png";
 import appleImg from "./assets/apple.png";
 import lycheeImg from "./assets/lychee.png";
+import pineappleImg from "./assets/pineapple.png"
 import { Star, Plus } from "lucide-react";
 import { Link } from "react-router-dom"; 
 import { useCart, type MenuItem } from "./CartContext";
 
 const menuItems: MenuItem[] = [
-  { name: "honey-lemon kamo zest", image: lemonImg, price: 80 },
-  { name: "green apple kamo zest", image: appleImg, price: 85 },
-  { name: "lychee kamo zest", image: lycheeImg, price: 90 },
+  { name: "honey-lemon kamo zest", image: lemonImg, price: 39 },
+  { name: "green apple kamo zest", image: appleImg, price: 29 },
+  { name: "lychee kamo zest", image: lycheeImg, price: 29 },
+  { name: "pineapple kamo zest", image: pineappleImg, price: 29 },
 ];
 export default function Drinks() {
   const { addToCart, totalItems } = useCart();
